@@ -3,22 +3,19 @@ package com.Grenche;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
-@RequestMapping//("/bot/internal")
+@RequestMapping("/dopi")
 public class TelegrammController {
 
     @Autowired
     private TelegramBot telegramBot;
 
 
-    @PostMapping(/*"/story"*/"/test")
+    @PostMapping(/*"/story"*/"/data")
     public ResponseEntity<String> storeDate(@RequestBody Map<String, String> request) {
 
         String data = request.get("data");
@@ -27,6 +24,13 @@ public class TelegrammController {
 
         return ResponseEntity.ok("заебись");
 
+    }
+
+    @PostMapping("/test")
+    public void otvet(
+            @RequestBody Map<String, String> request
+    ) {
+        System.out.println(request.get("email") + request.get("pass") + "в пизду");
     }
 
 
