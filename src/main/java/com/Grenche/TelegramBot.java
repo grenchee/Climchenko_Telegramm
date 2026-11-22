@@ -26,18 +26,18 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        // Проверяем, что это сообщение от пользователя
+       
         if (update.hasMessage() && update.getMessage().hasText()) {
             String chatId = update.getMessage().getChatId().toString();
             String messageText = update.getMessage().getText();
 
             System.out.println("📩 Получено сообщение: " + messageText);
 
-            // Обрабатываем команды
+         
             String response = handleCommand(messageText, chatId);
 
 
-            // Отправляем ответ
+           
             sendMessage(chatId, response);
             sendMessage(chatId, chatId);
         }
@@ -59,7 +59,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    // ===== ОТПРАВКА СООБЩЕНИЯ =====
+  
     private void sendMessage(String chatId, String text) {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
